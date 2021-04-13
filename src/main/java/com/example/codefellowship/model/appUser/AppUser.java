@@ -20,6 +20,14 @@ public class AppUser implements UserDetails {
     String username;
     String password;
 
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
