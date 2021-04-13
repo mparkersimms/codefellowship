@@ -4,6 +4,8 @@
 in the command line type 
 ``` ./gradle bootrun```
 
+
+
 ## Description of the app
 
 This app is a setup of security for an application. 
@@ -16,4 +18,4 @@ This app is a setup of security for an application.
 
 1. A user is built with a username and a password. The password is hashed using BCrypt
 
-1. The app allows the users info to be displayed on each page when logged in. 
+1. The app allows the users info to be displayed on each page when logged in.
