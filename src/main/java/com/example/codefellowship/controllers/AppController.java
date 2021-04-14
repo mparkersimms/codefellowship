@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class AppController {
@@ -28,17 +30,25 @@ public class AppController {
     public String showSignupPage(){
         return "signup.html";
     }
-    @GetMapping("/users")
+    @GetMapping("/all-users")
     public String showUsersPage(Principal p, Model m){
         System.out.println("p.getName() = "+ p.getName());
-        m.addAttribute("user", p.getName());
-        return "users.html";
+        List<AppUser> userData = appUserRepository.findAll();
+        m.addAttribute("users", userData);
+        System.out.println(userData);
+        System.out.println(userData.get(0).getFirstName());
+        return "all-users.html";
     }
     @GetMapping("/users/{id}")
     public String showIndividualUserPage(@PathVariable long id, Model m){
         AppUser userData = appUserRepository.getOne(id);
         m.addAttribute("userData", userData);
         return "users.html";
+    }
+    @PostMapping("/login")
+    public String afterLoggingIn(@PathVariable String username, Model m){
+        AppUser user = appUserRepository.findByUsername(username);
+        return "/users/{user.id}";
     }
 
 }
