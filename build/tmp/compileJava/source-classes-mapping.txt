@@ -2,13 +2,19 @@ com/example/codefellowship/model/appUser/AppUser.java
  com.example.codefellowship.model.appUser.AppUser
 com/example/codefellowship/model/appUser/AppUserRepository.java
  com.example.codefellowship.model.appUser.AppUserRepository
+com/example/codefellowship/model/post/PostRepository.java
+ com.example.codefellowship.model.post.PostRepository
 com/example/codefellowship/CodefellowshipApplication.java
  com.example.codefellowship.CodefellowshipApplication
+com/example/codefellowship/model/post/Post.java
+ com.example.codefellowship.model.post.Post
 com/example/codefellowship/configs/UserDetailsServiceImplementation.java
  com.example.codefellowship.configs.UserDetailsServiceImplementation
+com/example/codefellowship/controllers/AppUserController.java
+ com.example.codefellowship.controllers.AppUserController
 com/example/codefellowship/controllers/AppController.java
  com.example.codefellowship.controllers.AppController
 com/example/codefellowship/configs/WebSecurityConfiguration.java
  com.example.codefellowship.configs.WebSecurityConfiguration
-com/example/codefellowship/controllers/AppUserController.java
- com.example.codefellowship.controllers.AppUserController
+com/example/codefellowship/controllers/PostController.java
+ com.example.codefellowship.controllers.PostController
