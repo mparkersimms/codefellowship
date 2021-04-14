@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.List;
@@ -65,16 +66,19 @@ public class AppController {
         m.addAttribute("userData", userData);
         return "users.html";
     }
-    @PostMapping("/login")
-    public String afterLoggingIn(@PathVariable String username, Model m, Principal p){
+    @GetMapping("/myProfile")
+    public String showIndividualUserPageAfterLogin(Model m, Principal p){
         if(p != null){
-            System.out.println("p.getName() = " + p.getName());
+            System.out.println("p.getName()!!!! = " + p.getName());
             m.addAttribute("user", p.getName());
             AppUser appUser = appUserRepository.findByUsername(p.getName());
             m.addAttribute("userInfo", appUser);
         }
-        AppUser user = appUserRepository.findByUsername(username);
-        return "/users/{user.id}";
+        AppUser userData = appUserRepository.findByUsername(p.getName());
+        m.addAttribute("userData", userData);
+        return "users.html";
     }
+
+
 
 }
