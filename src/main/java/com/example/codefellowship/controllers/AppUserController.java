@@ -11,12 +11,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.Date;
 
 @Controller
@@ -56,7 +58,13 @@ public class AppUserController {
     }
 
     @GetMapping("/login")
-    public String showLoginPage(){
+    public String showLoginPage(Principal p, Model m){
+        if(p != null){
+            System.out.println("p.getName() = " + p.getName());
+            m.addAttribute("user", p.getName());
+            AppUser appUser = appUserRepository.findByUsername(p.getName());
+            m.addAttribute("userInfo", appUser);
+        }
         return "login.html";
     }
 

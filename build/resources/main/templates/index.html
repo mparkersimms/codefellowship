@@ -3,18 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Home of the Users</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<header>
-    <h1>CodeFellowship</h1>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/signup">Sign up</a>
-        <a href="/login">Login</a>
-        <a href="/logout">Logout</a>
-    </nav>
-    <h2 th:text="'Welcome ' + ${user}">Welcome</h2>
-</header>
+<header th:replace="./fragments/header.html :: header"></header>
 
 <P> Codefellowship is about people like you! All are welcome, and all are appreciated.</P>
 <p>Interested in signing up? click the link below! </p>

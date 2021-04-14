@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<header>
-    <h1>CodeFellowship</h1>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/signup">Sign up</a>
-        <a href="/login">Login</a>
-        <a href="/logout">Logout</a>
-    </nav>
-    <h2 th:text="'Welcome ' + ${user}">Welcome</h2>
-</header>
+
+<header th:replace="./fragments/header.html :: header"></header>
+
 <section>
     <img width="200px" src="https://www.pngarts.com/files/10/Default-Profile-Picture-Free-PNG-Image.png">
     <h3 th:text="${userData.firstName} + ' ' + ${userData.lastName}">First and Last Names</h3>
     <h3 th:text="'Date of Birth: ' + ${userData.dateOfBirth}">Date Of Birth</h3>
     <h3 th:text="${userData.bio}">Bio</h3>
+</section>
+<section>
+    <form th:if="${userInfo.id} == ${userData.id}" th:action="@{'/newPost/' + ${userData.id}}" method="post">
+        <label for="body" >Create New Post=></label>
+        <input type="text-area" name="body">
+        <input type="submit" value="Post">
+    </form>
+
+    <div th:each="post : ${userData.posts}">
+        <h3>New Post</h3>
+    <p th:text="${post.body}"></p>
+    <p th:text="'Posted on ' + ${post.createAt}"></p>
+    </div>
 </section>
 
 </body>
