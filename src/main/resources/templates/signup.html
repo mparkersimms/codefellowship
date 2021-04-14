@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <h1>CodeFellowship</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/signup">Sign up</a>
+        <a href="/login">Login</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<h1>Welcome New User</h1>
+<h2>Use the form below to sign up!</h2>
+<form action="/appUser" method="post">
+    <label for="firstName" >First Name</label>
+    <input type="text" name="firstName">
+    <label for="lastName" >Last Name</label>
+    <input type="text" name="lastName">
+    <label for="dateOfBirth" >Date Of Birth</label>
+    <input type="date" name="dateOfBirth">
+    <label for="bio" >Bio</label>
+    <input type="text" name="bio">
+    <label for="username" >username</label>
+    <input type="text" name="username">
+    <label for="password" >password</label>
+    <input type="password" name="password">
+    <input type="submit" value="signup">
+</form>
+</body>
+</html>

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.Date;
+
 @Controller
 public class AppUserController {
 
@@ -20,12 +22,16 @@ public class AppUserController {
     AppUserRepository appUserRepository;
 
     @PostMapping("/appUser")
-    public RedirectView createUser(String username, String password){
+    public RedirectView createUser(String username, String password, String firstName, String lastName, String dateOfBirth, String bio){
         password = passwordEncoder.encode(password);
         System.out.println("password = " + password);
         AppUser appUser = new AppUser();
         appUser.setPassword(password);
         appUser.setUsername(username);
+        appUser.setFirstName(firstName);
+        appUser.setLastName(lastName);
+        appUser.setBio(bio);
+        appUser.setDateOfBirth(dateOfBirth);
 
         appUserRepository.save(appUser);
         return new RedirectView("/users");
