@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 public class AppUser implements UserDetails {
@@ -19,6 +20,26 @@ public class AppUser implements UserDetails {
 
     String username;
     String password;
+    String firstName;
+    String lastName;
+    String bio;
+    String dateOfBirth;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
     public void setPassword(String password){
         this.password = password;
@@ -28,6 +49,21 @@ public class AppUser implements UserDetails {
         this.username = username;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
