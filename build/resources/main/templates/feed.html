@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header th:replace="./fragments/header.html :: header"></header>
+
+<section class="posts">
+    <div th:each = "user:${leaders}" th:unless="${user.id} == ${userInfo.id} ">
+        <div th:if="${user.posts}" th:each="post:${user.posts}">
+        <a style = "text-decoration: none;color: black" th:href="@{'/users/' + ${user.id}}">
+            <h4 th:text="'Post by: ' + ${user.firstName} + ' ' + ${user.lastName}">First and Last Names</h4>
+        </a>
+            <p th:text="${post.body}"></p>
+            <p th:text="'Posted on ' + ${post.createAt}"></p>
+        </div>
+    </div>
+</section>
+</body>
+</html>

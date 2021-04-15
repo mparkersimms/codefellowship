@@ -12,9 +12,9 @@ com/example/codefellowship/controllers/PostController.java
  com.example.codefellowship.controllers.PostController
 com/example/codefellowship/controllers/AppUserController.java
  com.example.codefellowship.controllers.AppUserController
-com/example/codefellowship/controllers/AppController.java
- com.example.codefellowship.controllers.AppController
-com/example/codefellowship/configs/WebSecurityConfiguration.java
- com.example.codefellowship.configs.WebSecurityConfiguration
 com/example/codefellowship/configs/UserDetailsServiceImplementation.java
  com.example.codefellowship.configs.UserDetailsServiceImplementation
+com/example/codefellowship/configs/WebSecurityConfiguration.java
+ com.example.codefellowship.configs.WebSecurityConfiguration
+com/example/codefellowship/controllers/AppController.java
+ com.example.codefellowship.controllers.AppController

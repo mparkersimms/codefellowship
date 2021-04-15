@@ -8,23 +8,28 @@
 <body>
 
 <header th:replace="./fragments/header.html :: header"></header>
-
-<h1>Welcome New User</h1>
-<h2>Use the form below to sign up!</h2>
-<form action="/appUser" method="post">
-    <label for="firstName" >First Name</label>
-    <input type="text" name="firstName">
-    <label for="lastName" >Last Name</label>
-    <input type="text" name="lastName">
-    <label for="dateOfBirth" >Date Of Birth</label>
-    <input type="date" name="dateOfBirth">
-    <label for="bio" >Bio</label>
-    <input type="text" name="bio">
-    <label for="username" >username</label>
-    <input type="text" name="username">
-    <label for="password" >password</label>
-    <input type="password" name="password">
-    <input type="submit" value="signup">
-</form>
+<section id = "signup">
+    <div>
+        <h1>Welcome New User</h1>
+        <h2>Use the form below to sign up!</h2>
+    </div>
+    <div>
+        <form action="/appUser" method="post">
+            <label for="firstName" >First Name</label>
+            <input type="text" name="firstName"><br>
+            <label for="lastName" >Last Name</label>
+            <input type="text" name="lastName"><br>
+            <label for="dateOfBirth" >Date Of Birth</label>
+            <input type="date" name="dateOfBirth"><br>
+            <label for="bio" >Bio</label>
+            <input type="text" name="bio"><br>
+            <label for="username" >username</label>
+            <input type="text" name="username"><br>
+            <label for="password" >password</label>
+            <input type="password" name="password"><br>
+            <input type="submit" value="signup">
+        </form>
+    </div>
+</section>
 </body>
 </html>

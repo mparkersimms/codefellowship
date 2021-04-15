@@ -54,7 +54,7 @@ public class AppUserController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        return new RedirectView("/all-users");
+        return new RedirectView("/myProfile");
     }
 
     @GetMapping("/login")

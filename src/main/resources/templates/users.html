@@ -9,13 +9,22 @@
 
 <header th:replace="./fragments/header.html :: header"></header>
 
-<section>
+<section class="profile">
+    <section>
     <img width="200px" src="https://www.pngarts.com/files/10/Default-Profile-Picture-Free-PNG-Image.png">
-    <h3 th:text="${userData.firstName} + ' ' + ${userData.lastName}">First and Last Names</h3>
+    <div>
+    <h3 style="display: inline-block" th:text="${userData.firstName} + ' ' + ${userData.lastName}">First and Last Names</h3>
+    <form style="display: inline-block" th:unless="${userInfo.id} == ${userData.id}" action="/follow" method="post">
+        <input type="hidden" th:value="${userInfo.id}" name="followerId">
+        <input id="text-area" type="hidden" th:value="${userData.id}" name="leaderId">
+        <button>Follow</button>
+    </form>
     <h3 th:text="'Date of Birth: ' + ${userData.dateOfBirth}">Date Of Birth</h3>
     <h3 th:text="${userData.bio}">Bio</h3>
+    </div>
+    </section>
 </section>
-<section>
+<section class="posts">
     <form th:if="${userInfo.id} == ${userData.id}" th:action="@{'/newPost/' + ${userData.id}}" method="post">
         <label for="body" >Create New Post=></label>
         <input type="text-area" name="body">
