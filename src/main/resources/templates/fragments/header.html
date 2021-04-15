@@ -1,13 +1,16 @@
 <header th:fragment="header">
+    <section>
     <h1>CodeFellowship</h1>
     <nav>
         <a href="/">Home</a>
-        <a href="/signup">Sign up</a>
-        <a href="/login">Login</a>
-        <a href="/all-users">All Users</a>
+        <a th:unless="${user}" href="/login">Login</a>
+        <a th:if="${user}" href="/all-users">All Users</a>
+        <a th:if="${user}" href="/feed">Feed</a>
+        <a th:unless="${user}"href="/signup">Sign up</a>
         <a th:if="${user}" th:href="@{'/users/' + ${userInfo.id}}">Profile</a>
     </nav>
     <h2 th:unless=!${user} th:text="'Welcome ' + ${user}">Welcome</h2>
     <h2 th:unless=${user} >Welcome Guest</h2>
-        <a href="/logout">Logout</a>
+    <div id="logout"><a  th:if="${user}" href="/logout">Logout</a></div>
+    </section>
 </header>

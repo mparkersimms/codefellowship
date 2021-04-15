@@ -19,3 +19,8 @@ This app is a setup of security for an application.
 1. A user is built with a username and a password. The password is hashed using BCrypt
 
 1. The app allows the users info to be displayed on each page when logged in.
+
+1. The app allows users to see other users and follow them if they choose
+
+1. A users "feed" is based on the other users they follow and will only show posts from the users they follow.
+

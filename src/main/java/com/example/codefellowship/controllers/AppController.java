@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class AppController {
@@ -77,6 +78,36 @@ public class AppController {
         AppUser userData = appUserRepository.findByUsername(p.getName());
         m.addAttribute("userData", userData);
         return "users.html";
+    }
+
+    @PostMapping("/follow")
+    public RedirectView followAUser(Long followerId, Long leaderId){
+        System.out.println("followerId = " + followerId);
+        System.out.println("leaderId = " + leaderId);
+        AppUser follower = appUserRepository.findById(followerId).get();
+        AppUser leader = appUserRepository.findById(leaderId).get();
+        follower.getLeaders().add(leader);
+        appUserRepository.save(follower);
+        return new RedirectView("/");
+    }
+
+    @GetMapping("/feed")
+    public String showFeed(Model m, Principal p){
+        if(p != null){
+            System.out.println("p.getName() = " + p.getName());
+            m.addAttribute("user", p.getName());
+            AppUser appUser = appUserRepository.findByUsername(p.getName());
+            m.addAttribute("userInfo", appUser);
+            Set<AppUser> leaders = appUser.getLeaders();
+            m.addAttribute("leaders", leaders);
+            List<AppUser> userData = appUserRepository.findAll();
+            m.addAttribute("users", userData);
+            System.out.println(userData);
+            System.out.println(userData.get(0).getFirstName());
+            System.out.println(userData.get(0).getId());
+        }
+
+        return "feed.html";
     }
 
 

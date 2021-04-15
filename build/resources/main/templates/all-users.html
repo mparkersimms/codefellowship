@@ -8,14 +8,16 @@
 <body>
 <header th:replace="./fragments/header.html :: header"></header>
 
-<section>
-    <div th:each = "user:${users}">
-        <a style = "text-decoration: none;color: black" th:href="@{'/users/' + ${user.id}}">
+<section class="profiles">
+    <div th:each = "user:${users}" th:unless="${user.id} == ${userInfo.id} ">
     <img width="200px" src="https://www.pngarts.com/files/10/Default-Profile-Picture-Free-PNG-Image.png">
+        <div>
+        <a style = "text-decoration: none;color: black" th:href="@{'/users/' + ${user.id}}">
     <h3 th:text="${user.firstName} + ' ' + ${user.lastName}">First and Last Names</h3>
     <h3 th:text="'Date of Birth: ' + ${user.dateOfBirth}">Date Of Birth</h3>
     <h3 th:text="${user.bio}">Bio</h3>
         </a>
+        </div>
     </div>
 </section>
 </body>

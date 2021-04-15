@@ -6,9 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class AppUser implements UserDetails {
@@ -20,6 +18,16 @@ public class AppUser implements UserDetails {
     @OneToMany(mappedBy = "userThatMadeIt",cascade = CascadeType.ALL)
     List<Post> posts;
 
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    @JoinTable(
+            name="leadersAndFollowers",
+            joinColumns = {@JoinColumn(name="follower")},
+            inverseJoinColumns = {@JoinColumn(name = "leader")}
+    )
+    Set<AppUser> leaders = new HashSet<>();
+
+    @ManyToMany(mappedBy = "leaders")
+    Set<AppUser> followers = new HashSet<>();
 
     @Column(unique=true)
     String username;
@@ -116,5 +124,21 @@ public class AppUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Set<AppUser> getLeaders() {
+        return leaders;
+    }
+
+    public void setLeaders(Set<AppUser> leaders) {
+        this.leaders = leaders;
+    }
+
+    public Set<AppUser> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Set<AppUser> followers) {
+        this.followers = followers;
     }
 }
